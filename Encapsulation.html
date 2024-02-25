@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;500;700&display=swap" rel="stylesheet">
+<head>
+	<meta charset="UTF-8">
+	<title>"Об'єктно орієнтоване програмування інкапсуляція"</title>
+	
+	<style>
+
+		*{font-family:'Jura', sans-serif;}
+		
+		body {
+			background-image: url("img/background-1.jpg");
+    		background-repeat: no-repeat;
+    		background-size: cover;
+			background-attachment: scroll;;
+			background-size: 100% 100%;
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+		}
+		
+		.topbar {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+		}
+
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+		}
+
+		nav a {
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			border-radius: 5px;
+			transition: all 0.2s ease-in-out;
+		}
+
+		nav a:hover {
+			background-color: #fff;
+			color: #333;
+		}
+
+
+		.main {
+ 			max-width: 1500px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+
+	.footer {
+		background-color: #333;
+		color: #fff;
+		padding: 20px;
+		text-align: center;
+		margin-top: 20%;
+	}
+
+	@keyframes slide-up {
+		from {
+			transform: translateY(-100%);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes slide-down {
+		from {
+			transform: translateY(100%);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes slide-right {
+		from {
+			transform: translateX(-100%);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes slide-left {
+		from {
+			transform: translateX(100%);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
+
+	.topbar {
+		animation: slide-up 0.5s ease-in-out;
+	}
+
+	.sidebar {
+		animation: slide-up 0.5s ease-in-out;
+	}
+
+	.footer {
+		animation: slide-down 0.5s ease-in-out;
+	}
+
+	.terminal-style {
+		animation: slide-right 0.5s ease-in-out;
+	}
+
+	.code-example {
+		animation: slide-down 0.5s ease-in-out;
+	}
+
+	.code-example-2 {
+		animation: slide-left 0.5s ease-in-out;
+	}
+
+	.language-select-container {
+  		display: flex;
+  		align-items: center;
+  		margin-right: 20px;
+	}
+
+	#language-select {
+ 		background-color: #333;
+ 		color: #fff;
+ 		border: none;
+ 		padding: 5px 10px;
+		border-radius: 5px;
+  		outline: none;
+  		cursor: pointer;
+  		font-family: 'Jura', sans-serif;
+	}
+
+	#language-select:hover {
+  		background-color: #555;
+	}
+
+	#language-select option {
+  		background-color: #333;
+  		color: #fff;
+	}
+
+	.logo {
+  		height: 40px;
+  		margin-right: 20px;
+	}
+
+	.terminal-style {
+  		background-color: #fff;
+  		color: #000;
+  		font-family: 'Menlo', monospace;
+  		padding: 20px;
+  		border-radius: 20px;
+  		margin-top: 100px;
+		position: relative;
+		font-size: 20px;
+		word-wrap: break-word;
+		max-height: calc(50vh - (-1500px + (2 * (20px +10vw))));
+	}
+
+	.terminal-style .terminal-circles {
+  		position: absolute;
+ 		top: 10px;
+  		left: 10px;
+  		display: flex;
+	}
+
+	.terminal-style .terminal-circle {
+ 		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		margin-right: 4px;
+	}
+
+	.terminal-style .terminal-circle.red {
+ 		background-color: #FF5F56;
+	}
+
+	.terminal-style .terminal-circle.yellow {
+		background-color: #FFBD2E;
+	}
+
+	.terminal-style .terminal-circle.green {
+		background-color: #27C93F;
+	}
+
+	.main .text-and-image-container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.main .text-and-image-container img {
+		width: 200px;
+		height: 200px;
+	}
+
+    .learn-oop-desc {
+		width: 70%;
+	}
+
+	.code-example {
+  		display: flex;
+  		justify-content: left;
+  		align-items: left;
+  		height: 650px;
+		position: absolute;;
+	}	
+
+	.code-window {
+		width: 900px;
+		height: 790px;
+		background-color: #fff;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		overflow: hidden;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	}
+
+	.code-header {
+		height: 30px;
+		background-color: #ccc;
+		display: flex;
+		align-items: center;
+	}
+
+	.code-buttons {
+		display: flex;
+		margin-left: 10px;
+	}
+
+	.code-button {
+		width: 12px;
+		height: 12px;
+		margin-right: 5px;
+		border-radius: 50%;
+	}
+
+	.code-button.close {
+		background-color: #ff5f56;
+	}
+
+	.code-button.minimize {
+		background-color: #ffbd2e;
+	}
+
+	.code-button.maximize {
+		background-color: #27c93f;
+	}
+
+	.code-title {
+		font-size: 14px;
+		font-weight: bold;
+		margin-left: 10px;
+	}
+
+	.code-body {
+		padding: 10px;
+		overflow: auto;
+		text-align: left;
+	}
+
+	pre {
+		margin: 0;
+	}
+
+	.code-example-2 {
+		display: flex;
+  		justify-content: right;
+  		align-items: left;
+  		height: 660px;
+	}
+
+	.code-body-2{
+		padding: 10px;
+		overflow: auto;
+		text-align: left;
+		color: #fff;
+	}
+
+	.code-window-2 {
+		width: 500px;
+		height: 400px;
+		background-color: rgb(0, 0, 0);
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		overflow: hidden;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+	}
+
+	.code-buttons-2 {
+		display: flex;
+		margin-left: 10px;
+	}
+
+	::-webkit-scrollbar {
+		width: 0.5em;
+		height: 0.5em;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: transparent;
+	}
+
+	body {
+		scrollbar-width: none;
+	}
+
+	::-webkit-scrollbar {
+		width: 0.5em;
+		height: 0.5em;
+		background-color: #555;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: #333;
+	}
+
+</style>
+
+</head>
+<body>
+
+	<header class="topbar">
+		<nav>
+			<ul>
+				<img src="img/Logo2.png" class="logo">
+				<li><a href="main.html">Home</a></li>
+				<li><a href="About.html">About</a></li>
+			</ul>
+			<div class="language-select-container">
+				<label for="language-select" class="sr-only">Select language</label>
+				<select id="language-select">
+					<option value="uk">Українська</option>
+					<option value="en">English</option>
+				</select>
+				<a href="SignIn.html">Sign In</a>
+			</div>
+		</nav>
+	</header>
+	
+	<main class="main terminal-style">
+			<div class="terminal-circles">
+				<div class="terminal-circle red"></div>
+				<div class="terminal-circle yellow"></div>
+				<div class="terminal-circle green"></div>
+		  	</div>
+	<h1 data-lang="learn-oop">Інкапсуляція</h1>
+	<div class="text-and-image-container">
+		<p data-lang="Encapsulation1" class="learn-oop-desc">Одним із найважливіших факторів при проектуванні компонентів програми є приховування внутрішніх даних компонента та деталей його реалізації від інших компонентів програми та надання набору методів для взаємодії з ним (API). Цей принцип є одним із чотирьох фундаментальних принципів ОOП і називається інкапсуляцією.</p>
+	</div>
+    <h3 data-lang="Encapsulation2">Правильна інкапсуляція важлива з багатьох причин:</h3>
+    <div class="text-and-image-container">
+		<p data-lang="Encapsulation3" class="learn-oop-desc">1. Вона сприяє перевикористання компонентів: оскільки в цьому випадку компоненти взаємодіють один з одним лише за допомогою їх API і байдужі до змін внутрішньої структури, вони можуть використовуватися у ширшому контексті</p>
+	</div>
+    <div class="text-and-image-container">
+        <p data-lang="Encapsulation4" class="learn-oop-desc">2. Інкапсуляція прискорює процес розробки: слабко пов'язані один з одним компоненти (тобто компоненти, код яких якнайменше звертається або використовує код інших компонентів) можуть розроблятися, тестуватися і доповнюватися незалежно.</p>
+	</div>
+	<div class="text-and-image-container">
+        <p data-lang="Encapsulation5" class="learn-oop-desc">3. Правильно інкапсульовані компоненти легші для розуміння та процесу налагодження, що спрощує підтримку програми.
+			У мові Java інкапсуляція реалізована за допомогою системи класів, що дозволяють зібрати інформацію про об'єкт в одному місці; пакетів, які групують класи за будь-яким критерієм, та модифікаторів доступу, якими можна помітити весь клас або його поле чи метод.</p>
+	</div>
+	<h3 data-lang="Encapsulation6">Усього модифікаторів доступу чотири:</h3>
+	<div class="text-and-image-container">
+        <br data-lang="public" class="learn-oop-desc"> ● public – повний доступ до сутності (поля чи методу класу) з будь-якого пакету;</br>
+	</div>
+	<div class="text-and-image-container">
+        <br data-lang="protected" class="learn-oop-desc">● protected – доступ до сутності лише для класів свого пакета та спадкоємців класу;</br>
+	</div>
+	<div class="text-and-image-container">
+        <br data-lang="modifier" class="learn-oop-desc">● неявний модифікатор за промовчанням (за відсутності трьох явних) – доступ до сутності лише класів свого пакета;</br>
+	</div>
+	<div class="text-and-image-container">
+        <br data-lang="private" class="learn-oop-desc">● private – доступ лише усередині класу, у якому оголошено сутність.</br>
+	</div>
+	<div class="text-and-image-container">
+        <p data-lang="Encapsulation7" class="learn-oop-desc">Для досягнення правильної інкапсуляції необхідно надати коректний API для роботи з компонентом. Наприклад, в сеттер для змінної можна включити логіку з перевірки значень, що передаються, або не надавати сеттери в класі зовсім, якщо клас повинен бути доступний тільки для читання.</p>
+	</div>
+	</main>
+
+	<main class="main">
+		<div class="code-example">
+		  <div class="code-window">
+			<div class="code-header">
+			  <div class="code-buttons">
+				<div class="code-button close"></div>
+				<div class="code-button minimize"></div>
+				<div class="code-button maximize"></div>
+			  </div>
+			  <div class="code-title">C++</div>
+			</div>
+		<div class="code-body">
+			  <pre><code>class BankAccount {
+	private:
+		std::string accountNumber;
+		double balance;
+	public:
+		void setAccountNumber(std::string number) {
+				accountNumber = number;
+			}
+			std::string getAccountNumber() {
+				return accountNumber;
+			}
+			void setBalance(double amount) {
+				balance = amount;
+			}
+			double getBalance() {
+				return balance;
+			}
+			void deposit(double amount) {
+				balance += amount;
+			}
+			void withdraw(double amount) {
+				if (amount > balance) {
+					std::cout << "Insufficient funds!" << std::endl;
+				} else {
+					balance -= amount;
+				}
+			}
+		};
+					
+int main() {
+	BankAccount account;
+	account.setAccountNumber("123456");
+	account.setBalance(1000.0);
+	std::cout << "Account number: " << account.getAccountNumber() << std::endl;
+	std::cout << "Balance: " << account.getBalance() << std::endl;
+	account.deposit(500.0);
+	std::cout << "New balance after deposit: " << account.getBalance() << std::endl;
+	account.withdraw(2000.0);
+	std::cout << "New balance after withdrawal: " << account.getBalance() << std::endl;
+	return 0;
+}
+			  </code></pre>
+			</div>
+		  </div>
+		</div>
+	  </main>
+
+	  <main class="main">
+		<div class="code-example-2">
+		  <div class="code-window-2">
+			<div class="code-header">
+			  <div class="code-buttons-2">
+				<div class="code-button close"></div>
+				<div class="code-button minimize"></div>
+				<div class="code-button maximize"></div>
+			  </div>
+			  <div class="code-title">Terminal</div>
+			</div>
+		<div class="code-body-2">
+			  <pre><code>Account number: 123456
+Balance: 1000
+New balance after deposit: 1500
+Insufficient funds!
+New balance after withdrawal: 1500
+			  </code></pre>
+			</div>
+		  </div>
+		</div>
+	  </main>
+
+	  <main class="main terminal-style">
+			<div class="terminal-circles">
+				<div class="terminal-circle red"></div>
+				<div class="terminal-circle yellow"></div>
+				<div class="terminal-circle green"></div>
+		  	</div>
+	<h2 data-lang="learn-oop-1">Принцип роботи</h2>
+	<div class="text-and-image-container">
+		<p data-lang="Encapsulation8" class="learn-oop-desc">Принцип інкапсуляції в цій програмі полягає в тому, що дані, пов’язані з банківським рахунком (номер рахунку та баланс), зберігаються в приватних змінних у класі BankAccount. Ці змінні не доступні безпосередньо ззовні класу. Замість цього надаються загальнодоступні методи (такі як setAccountNumber(), getAccountNumber(), setBalance(), getBalance(), deposit() і reject()) для доступу та зміни цих приватних змінних.</p></div>
+		<div class="text-and-image-container">
+		<p data-lang="Encapsulation9" class="learn-oop-desc">Це гарантує захист даних від випадкової або зловмисної модифікації поза класом. Методи також забезпечують рівень абстракції, що дозволяє змінювати реалізацію класу, не впливаючи на код, який його використовує. Наприклад, реалізацію методів депозиту() і знімання() можна змінити, щоб додати додаткову логіку або взаємодіяти із зовнішніми системами без зміни коду, який викликає ці методи.</p></div>
+		<div class="text-and-image-container"></div>
+		<p data-lang="Encapsulation10" class="learn-oop-desc">Таким чином, інкапсуляція є фундаментальним принципом об’єктно-орієнтованого програмування, який сприяє приховуванню інформації та абстракції шляхом обмеження доступу до внутрішнього стану об’єктів і надання керованого інтерфейсу для взаємодії з ними.</p></div>
+	</main>
+
+	<footer class="footer">
+		<p>&copy; 2023 My Website</p>
+	</footer>
+
+	<script>
+		const translations = {
+		  en: {
+			"learn-oop": "Encapsulation",
+			"Encapsulation1": "One of the most important factors in the design of application components is to hide the internal data of the component and its implementation details from other application components and to provide a set of methods for interacting with it (API). This principle is one of the four fundamental principles of OOP and is called encapsulation.",
+            "Encapsulation2": "Proper encapsulation is important for many reasons:",
+            "Encapsulation3": "1. It promotes reusability of components: since in this case the components interact with each other only through their API and are indifferent to changes in the internal structure, they can be used in a wider context",
+            "Encapsulation4": "2. Encapsulation speeds up the development process: components that are loosely coupled to each other (that is, components whose code refers to or uses the code of other components as little as possible) can be developed, tested and supplemented independently.",
+			"Encapsulation5": "3. Properly encapsulated components are easier to understand and debug, making the application easier to maintain.In the Java language, encapsulation is implemented using a class system that allows you to collect information about an object in one place; packages that group classes according to some criteria, and access modifiers that can mark an entire class or its field or method.",
+			"Encapsulation6": "There are four access modifiers in total:",
+			"public": "● public - full access to an entity (field or class method) from any package;",
+			"protected": "● protected - access to the entity only for the classes of its package and class heirs;",
+			"modifier": "● implicit modifier by default (in the absence of three explicit ones) - access to the entity only for classes of its package;",
+			"private": "● private - access only within the class in which the entity is declared.",
+			"Encapsulation7": "To achieve correct encapsulation, it is also necessary to provide the correct API for working with the component. For example, you can include logic in the setter for a variable to check the passed values, or not provide setters in the class at all if the class should be read-only.",
+			"learn-oop-1": "Principle of operation",
+			"Encapsulation8": "The principle of encapsulation in this program is that the data related to the bank account (account number and balance) is stored in private variables in the BankAccount class. These variables are not directly accessible from outside the class. Instead, public methods (such as setAccountNumber(), getAccountNumber(), setBalance(), getBalance(), deposit(), and reject()) are provided to access and modify these private variables.",
+			"Encapsulation9": "This ensures that the data is protected from accidental or malicious modification outside the class. Methods also provide a level of abstraction that allows you to change the implementation of a class without affecting the code that uses it. For example, the implementation of the deposit() and withdraw() methods can be modified to add additional logic or interact with external systems without changing the code that calls these methods.",
+			"Encapsulation10": "Thus, encapsulation is a fundamental principle of object-oriented programming that promotes information hiding and abstraction by limiting access to the internal state of objects and providing a controlled interface for interacting with them.",
+		  },
+		  uk: {
+			"learn-oop": "Інкапсуляція",
+			"Encapsulation1": "Одним із найважливіших факторів при проектуванні компонентів програми є приховування внутрішніх даних компонента та деталей його реалізації від інших компонентів програми та надання набору методів для взаємодії з ним (API). Цей принцип є одним із чотирьох фундаментальних принципів ОOП і називається інкапсуляцією.",
+            "Encapsulation2": "Правильна інкапсуляція важлива з багатьох причин:",
+            "Encapsulation3": "1. Вона сприяє перевикористання компонентів: оскільки в цьому випадку компоненти взаємодіють один з одним лише за допомогою їх API і байдужі до змін внутрішньої структури, вони можуть використовуватися у ширшому контексті",
+            "Encapsulation4": "2. Інкапсуляція прискорює процес розробки: слабко пов'язані один з одним компоненти (тобто компоненти, код яких якнайменше звертається або використовує код інших компонентів) можуть розроблятися, тестуватися і доповнюватися незалежно.",
+			"Encapsulation5": "3. Правильно інкапсульовані компоненти легші для розуміння та процесу налагодження, що спрощує підтримку програми. У мові Java інкапсуляція реалізована за допомогою системи класів, що дозволяють зібрати інформацію про об'єкт в одному місці; пакетів, які групують класи за будь-яким критерієм, та модифікаторів доступу, якими можна помітити весь клас або його поле чи метод.",
+			"Encapsulation6": "Усього модифікаторів доступу чотири:",
+			"public": "● public – повний доступ до сутності (поля чи методу класу) з будь-якого пакету;",
+			"protected": "● protected – доступ до сутності лише для класів свого пакета та спадкоємців класу;",
+			"modifier": "● неявний модифікатор за промовчанням (за відсутності трьох явних) – доступ до сутності лише класів свого пакета;",
+			"private": "● private – доступ лише усередині класу, у якому оголошено сутність.",
+			"Encapsulation7": "Для досягнення правильної інкапсуляції необхідно надати коректний API для роботи з компонентом. Наприклад, в сеттер для змінної можна включити логіку з перевірки значень, що передаються, або не надавати сеттери в класі зовсім, якщо клас повинен бути доступний тільки для читання.",
+			"learn-oop-1": "Принцип роботи",
+			"Encapsulation8": "Принцип інкапсуляції в цій програмі полягає в тому, що дані, пов’язані з банківським рахунком (номер рахунку та баланс), зберігаються в приватних змінних у класі BankAccount. Ці змінні не доступні безпосередньо ззовні класу. Замість цього надаються загальнодоступні методи (такі як setAccountNumber(), getAccountNumber(), setBalance(), getBalance(), deposit() і reject()) для доступу та зміни цих приватних змінних.",
+			"Encapsulation9": "Це гарантує захист даних від випадкової або зловмисної модифікації поза класом. Методи також забезпечують рівень абстракції, що дозволяє змінювати реалізацію класу, не впливаючи на код, який його використовує. Наприклад, реалізацію методів депозиту() і знімання() можна змінити, щоб додати додаткову логіку або взаємодіяти із зовнішніми системами без зміни коду, який викликає ці методи.",
+			"Encapsulation10": "Таким чином, інкапсуляція є фундаментальним принципом об’єктно-орієнтованого програмування, який сприяє приховуванню інформації та абстракції шляхом обмеження доступу до внутрішнього стану об’єктів і надання керованого інтерфейсу для взаємодії з ними.",
+		  },
+		};
+
+		function changeLanguage(lang)
+		{
+	  		const elements = document.querySelectorAll('[data-lang]');
+	  		elements.forEach((element) => {
+				const translationKey = element.getAttribute('data-lang');
+				element.textContent = translations[lang][translationKey];
+	  		});
+		}
+
+		document.getElementById('language-select').addEventListener('change', (event) => {
+		changeLanguage(event.target.value);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;500;700&display=swap" rel="stylesheet">
+<head>
+	<meta charset="UTF-8">
+	<title>"Об'єктно орієнтоване програмування головна"</title>
+	
+	<style>
+
+		*{font-family:'Jura', sans-serif;}
+		
+		body {
+			background-image: url("img/jefferson-santos-9SoCnyQmkzI-unsplash.jpg");
+    		background-repeat: no-repeat;
+    		background-size: cover;
+			background-attachment: fixed;
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+		}
+
+		.topbar {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+		}
+
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+		}
+
+		nav li {
+			margin: 0 10px;
+		}
+
+		nav a {
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			border-radius: 5px;
+			transition: all 0.2s ease-in-out;
+		}
+
+		nav a:hover {
+			background-color: #fff;
+			color: #333;
+		}
+
+		.main {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.featured {
+			flex-basis: 100%;
+			margin-bottom: 20px;
+			padding: 20px;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+			cursor: pointer;
+			transition: all 0.2s ease-in-out;
+			border-radius: 10px;
+		}
+
+		.featured:hover {
+			transform: scale(1.05);
+		}
+
+		.featured img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.featured h2 {
+			margin: 10px 0;
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+			transition: all 0.2s ease-in-out;
+		}
+
+		.featured:hover h2 {
+			color: rgb(0, 0, 0);
+		}
+
+		.featured::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.226);
+			opacity: 0;
+			transition: all 0.2s ease-in-out;
+		}
+
+		.featured:hover::before {
+			opacity: 1;
+		}
+
+		.featured::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 24px;
+			color: #fff;
+			opacity: 0;
+			transition: all 0.2s ease-in-out;
+		}
+
+		.featured:hover::after {
+			opacity: 1;
+		}
+
+		.sidebar {
+			padding: 60px;
+			border-radius: 10px;
+			text-align: center;
+			margin: auto;
+  			width: 50%;
+		}
+
+		.sidebar h3 {
+			margin: 0 0 10px;
+			font-size: 50px;
+			font-weight: bold;
+			color: rgb(248, 248, 248);
+		}
+
+		.sidebar ul {
+			list-style: none;
+			font-size: 30px;
+			margin: 0;
+			padding: 0;
+		
+        }	
+		
+		.sidebar li {
+			margin: 0 0 10px;
+		}
+
+		.sidebar a {
+			color: rgb(253, 253, 253);
+			text-decoration: none;
+			transition: all 0.2s ease-in-out;
+		}
+
+		.sidebar a:hover {
+			color: #fff;
+			background-color: #333;
+			padding: 5px;
+			border-radius: 5px;
+		}
+
+		.footer {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+		}
+
+		@keyframes slide-up {
+			from {
+				transform: translateY(-100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes fade-in {
+			from {
+				transform: translateX(100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slide-down {
+			from {
+				transform: translateY(100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		.topbar {
+			animation: slide-up 0.5s ease-in-out;
+		}
+
+		.main {
+			animation: fade-in 0.5s ease-in-out;
+		}
+
+		.sidebar {
+			animation: slide-up 0.5s ease-in-out;
+		}
+
+		.footer {
+			animation: slide-down 0.5s ease-in-out;
+		}
+
+		.language-select-container {
+			display: flex;
+			align-items: center;
+			margin-right: 20px;
+		}
+
+		#language-select {
+			background-color: #333;
+			color: #fff;
+			border: none;
+			padding: 5px 10px;
+			border-radius: 5px;
+			outline: none;
+			cursor: pointer;
+			font-family: 'Jura', sans-serif;
+		}
+
+		#language-select:hover {
+			background-color: #555;
+		}
+
+		#language-select option {
+			background-color: #333;
+			color: #fff;
+		}
+
+		.logo {
+			height: 40px;
+			margin-right: 20px;
+		}
+
+		::-webkit-scrollbar {
+			width: 0.5em;
+			height: 0.5em;
+		}
+
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: transparent;
+		}
+
+		body {
+			scrollbar-width: none;
+		}
+
+		::-webkit-scrollbar {
+			width: 0.5em;
+			height: 0.5em;
+			background-color: #555;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: #333;
+		}
+	
+</style>
+
+</head>
+<body>
+	<header class="topbar">
+		<nav>
+			<ul>
+				<img src="img/Logo2.png" class="logo">
+				<li><a href="main.html">Home</a></li>
+				<li><a href="About.html">About</a></li>
+			</ul>
+			<div class="language-select-container">
+				<label for="language-select" class="sr-only">Select language</label>
+				<select id="language-select">
+					<option value="uk">Українська</option>
+					<option value="en">English</option>
+					<script>
+						document.getElementById('language-select').addEventListener('change', (event) => {
+						  changeLanguage(event.target.value);
+						});	
+					</script>
+				</select>
+				<a href="SignIn.html">Sign In</a>
+		</nav>
+	</header>
+	<form class="main" action="LearnOOP.html">
+		<article class="featured">
+			<button class="featured">
+				<img src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?ixlib=rb-4.4.0&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=mainat&amp;fit=crop&amp;w=800&amp;q=100">
+				<h2 data-lang="learn-oop">Дізнатися про ООП зараз</h2>
+				<p data-lang="learn-oop-desc">Вивчіть ООП для кращої організації коду для ефективнішої розробки програмного забезпечення.</p>
+			</button>
+		</article>
+		<aside class="sidebar">
+			<h3 data-lang="learn-oop-2">Основні принципи ООП</h3>
+			<ul>
+				<li><a href="Encapsulation.html" data-lang="Enc">Інкапсуляція</a></li>
+				<li><a href="Inheritance.html" data-lang="Inh">Успадкування</a></li>
+				<li><a href="Polymorphism.html" data-lang="Pol">Поліморфізм</a></li>
+			</ul>
+		</aside>
+	</form>
+	<footer class="footer">
+		<p>&copy; 2023 My Website</p>
+	</footer>
+	
+	<script>
+		const translations = {
+		  en: {
+			"learn-oop": "Learn OOP now",
+			"learn-oop-2": "Basic principles of OOP",
+			"learn-oop-desc": "Study OOP for better code organization and more efficient software development.",
+			"Enc": "Encapsulation",
+			"Inh": "Inheritance",
+			"Pol": "Polymorphism",
+		  },
+		  uk: {
+			"learn-oop": "Дізнатися про ООП зараз",
+			"learn-oop-2": "Основні принципи ООП",
+			"learn-oop-desc": "Вивчіть ООП для кращої організації коду для ефективнішої розробки програмного забезпечення.",
+			"Enc": "Інкапсуляція",
+			"Inh": "Успадкування",
+			"Pol": "Поліморфізм",
+		  },
+		};
+	</script>
+	<script>
+		function changeLanguage(lang)
+		{
+	  	const elements = document.querySelectorAll('[data-lang]');
+	  	elements.forEach((element) => {
+			const translationKey = element.getAttribute('data-lang');
+			element.textContent = translations[lang][translationKey];
+	  	});
+		}
+	</script>
+</body>
+</html>

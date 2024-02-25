@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;500;700&display=swap" rel="stylesheet">
+<head>
+	<meta charset="UTF-8">
+	<title>"Об'єктно орієнтоване програмування поліморфізм"</title>
+	
+	<style>
+
+		*{font-family:'Jura', sans-serif;}
+		
+		body {
+			background-image: url("img/background-3.jpg");
+    		background-repeat: no-repeat;
+    		background-size: cover;
+			background-attachment: scroll;;
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+		}
+
+		.topbar {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+		}
+
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+		}
+
+		nav a {
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			border-radius: 5px;
+			transition: all 0.2s ease-in-out;
+		}
+
+		nav a:hover {
+			background-color: #fff;
+			color: #333;
+		}
+
+
+		.main {
+ 			max-width: 1500px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+
+		.footer {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+			margin-top: 20%;
+		}
+
+		@keyframes slide-up {
+			from {
+				transform: translateY(-100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slide-down {
+			from {
+				transform: translateY(100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slide-right {
+			from {
+				transform: translateX(-100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slide-left {
+			from {
+				transform: translateX(100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		.topbar {
+			animation: slide-up 0.5s ease-in-out;
+		}
+
+		.sidebar {
+			animation: slide-up 0.5s ease-in-out;
+		}
+
+		.footer {
+			animation: slide-down 0.5s ease-in-out;
+		}
+
+		.terminal-style {
+			animation: slide-right 0.5s ease-in-out;
+		}
+
+		.code-example {
+			animation: slide-down 0.5s ease-in-out;
+		}
+
+		.code-example-2 {
+			animation: slide-left 0.5s ease-in-out;
+		}
+
+		.language-select-container {
+			display: flex;
+			align-items: center;
+			margin-right: 20px;
+		}
+
+		#language-select {
+			background-color: #333;
+			color: #fff;
+			border: none;
+			padding: 5px 10px;
+			border-radius: 5px;
+			outline: none;
+			cursor: pointer;
+			font-family: 'Jura', sans-serif;
+		}
+
+		#language-select:hover {
+			background-color: #555;
+		}
+
+		#language-select option {
+			background-color: #333;
+			color: #fff;
+		}
+
+		.logo {
+			height: 40px;
+			margin-right: 20px;
+		}
+
+		.terminal-style {
+			background-color: #fff;
+			color: #000;
+			font-family: 'Menlo', monospace;
+			padding: 20px;
+			border-radius: 20px;
+			margin-top: 50px;
+			position: relative;
+			font-size: 20px;
+			word-wrap: break-word;
+			max-height: calc(50vh - (-1500px + (2 * (20px +10vw))));
+		}
+
+		.terminal-style .terminal-circles {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			display: flex;
+		}
+
+		.terminal-style .terminal-circle {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			margin-right: 4px;
+		}
+
+		.terminal-style .terminal-circle.red {
+			background-color: #FF5F56;
+		}
+
+		.terminal-style .terminal-circle.yellow {
+			background-color: #FFBD2E;
+		}
+
+		.terminal-style .terminal-circle.green {
+			background-color: #27C93F;
+		}
+
+		.main .text-and-image-container {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.main .text-and-image-container img {
+			width: 200px;
+			height: 200px;
+		}
+
+		.learn-oop-desc {
+			width: 70%;
+		}
+
+		.code-example {
+			display: flex;
+			justify-content: left;
+			align-items: left;
+			height: 650px;
+			position: absolute;;
+		}	
+
+		.code-window {
+			width: 900px;
+			height: 930px;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			overflow: hidden;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		}
+
+		.code-header {
+			height: 30px;
+			background-color: #ccc;
+			display: flex;
+			align-items: center;
+		}
+
+		.code-buttons {
+			display: flex;
+			margin-left: 10px;
+		}
+
+		.code-button {
+			width: 12px;
+			height: 12px;
+			margin-right: 5px;
+			border-radius: 50%;
+		}
+
+		.code-button.close {
+			background-color: #ff5f56;
+		}
+
+		.code-button.minimize {
+			background-color: #ffbd2e;
+		}
+
+		.code-button.maximize {
+			background-color: #27c93f;
+		}
+
+		.code-title {
+			font-size: 14px;
+			font-weight: bold;
+			margin-left: 10px;
+		}
+
+		.code-body {
+			padding: 10px;
+			overflow: auto;
+			text-align: left;
+		}
+
+		pre {
+			margin: 0;
+		}
+
+		.code-example-2 {
+			display: flex;
+			justify-content: right;
+			align-items: left;
+			height: 850px;
+		}
+
+		.code-body-2{
+			padding: 10px;
+			overflow: auto;
+			text-align: left;
+			color: #fff;
+		}
+
+		.code-window-2 {
+			width: 500px;
+			height: 400px;
+			background-color: rgb(0, 0, 0);
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			overflow: hidden;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		}
+
+		.code-buttons-2 {
+			display: flex;
+			margin-left: 10px;
+		}
+
+		::-webkit-scrollbar {
+			width: 0.5em;
+			height: 0.5em;
+		}
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: transparent;
+		}
+
+		body {
+			scrollbar-width: none;
+		}
+
+		::-webkit-scrollbar {
+			width: 0.5em;
+			height: 0.5em;
+			background-color: #555;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: #333;
+		}
+
+</style>
+
+</head>
+<body>
+
+	<header class="topbar">
+		<nav>
+			<ul>
+				<img src="img/Logo2.png" class="logo">
+				<li><a href="main.html">Home</a></li>
+				<li><a href="About.html">About</a></li>
+			</ul>
+			<div class="language-select-container">
+				<label for="language-select" class="sr-only">Select language</label>
+				<select id="language-select">
+					<option value="uk">Українська</option>
+					<option value="en">English</option>
+				</select>
+				<a href="SignIn.html">Sign In</a>
+			</div>
+		</nav>
+	</header>
+	
+	<main class="main terminal-style">
+			<div class="terminal-circles">
+				<div class="terminal-circle red"></div>
+				<div class="terminal-circle yellow"></div>
+				<div class="terminal-circle green"></div>
+		  	</div>
+	<h1 data-lang="learn-oop">Поліморфізм</h1>
+	<div class="text-and-image-container">
+		<p data-lang="Encapsulation1" class="learn-oop-desc">Поліморфізм є одним із стовпів ООП разом із успадкуванням та інкапсуляцією. Це допомагає зробити код більш гнучким, зручним для багаторазового використання та зручнішим у обслуговуванні. Поліморфізм досягається за допомогою двох механізмів: перевантаження методу та перевизначення методу.</p>
+	</div>
+    <div class="text-and-image-container">
+		<p data-lang="Encapsulation2" class="learn-oop-desc">Перевантаження методів дозволяє співіснувати в одному класі декільком методам з однаковою назвою, але різними параметрами. Коли метод викликається, компілятор визначає, який метод викликати на основі кількості та типів переданих йому аргументів.</p>
+	</div>
+    <div class="text-and-image-container">
+		<p data-lang="Encapsulation3" class="learn-oop-desc">Перевизначення методу, з іншого боку, дозволяє підкласу забезпечити власну реалізацію методу, визначеного в його суперкласі. Коли метод викликається для об’єкта підкласу, замість методу, визначеного в суперкласі, виконується перевизначений метод.</p>
+	</div>
+    <div class="text-and-image-container">
+		<p data-lang="Encapsulation4" class="learn-oop-desc">Однією з головних переваг поліморфізму є те, що він дозволяє писати код у більш загальний спосіб. Це означає, що один метод може використовуватися для обробки об’єктів різних класів, якщо вони мають спільний суперклас або інтерфейс. Це може значно зменшити дублювання коду та зробити код більш придатним для обслуговування.</p>
+	</div>
+    <div class="text-and-image-container">
+		<p data-lang="Encapsulation5" class="learn-oop-desc">Ще одна перевага поліморфізму полягає в тому, що він забезпечує більшу гнучкість у розробці програм. Визначивши ієрархію класів, нові класи можна легко додавати до програми, не впливаючи на існуючий код. Це тому, що будь-який метод, який працює з об’єктом суперкласу, також працюватиме з об’єктами будь-якого підкласу.</p>
+	</div>
+	</main>
+
+	<main class="main">
+		<div class="code-example">
+		  <div class="code-window">
+			<div class="code-header">
+			  <div class="code-buttons">
+				<div class="code-button close"></div>
+				<div class="code-button minimize"></div>
+				<div class="code-button maximize"></div>
+			  </div>
+			  <div class="code-title">C++</div>
+			</div>
+		<div class="code-body">
+			  <pre><code>class Shape {
+    protected:
+        int width, height;
+             
+    public:
+        Shape(int w = 0, int h = 0) {
+            width = w;
+            height = h;
+        }
+        virtual int area() {
+            cout << "Parent class area :" << endl;
+            return 0;
+        }
+    };
+             
+class Rectangle: public Shape {
+    public:
+        Rectangle(int w = 0, int h = 0) : Shape(w, h) { }
+             
+        int area() {
+            cout << "Rectangle class area :" << endl;
+            return (width * height);
+        }
+    };
+             
+class Triangle: public Shape {
+    public:
+        Triangle(int w = 0, int h = 0) : Shape(w, h) { }
+             
+        int area() {
+            cout << "Triangle class area :" << endl;
+            return (width * height / 2);
+        }
+    };
+             
+int main() {
+    Shape *shape;
+    Rectangle rec(10,7);
+    riangle  tri(10,5);
+             
+    shape = &rec;
+    shape->area();
+             
+    shape = &tri;
+    shape->area();
+             
+    return 0;
+}
+			  </code></pre>
+			</div>
+		  </div>
+		</div>
+	  </main>
+
+	  <main class="main">
+		<div class="code-example-2">
+		  <div class="code-window-2">
+			<div class="code-header">
+			  <div class="code-buttons-2">
+				<div class="code-button close"></div>
+				<div class="code-button minimize"></div>
+				<div class="code-button maximize"></div>
+			  </div>
+			  <div class="code-title">Terminal</div>
+			</div>
+		<div class="code-body-2">
+			  <pre><code>Rectangle class area :
+Triangle class area :
+
+			  </code></pre>
+			</div>
+		  </div>
+		</div>
+	  </main>
+
+	  <main class="main terminal-style">
+			<div class="terminal-circles">
+				<div class="terminal-circle red"></div>
+				<div class="terminal-circle yellow"></div>
+				<div class="terminal-circle green"></div>
+		  	</div>
+	<h2 data-lang="learn-oop-1">Принцип роботи</h2>
+	<div class="text-and-image-container">
+		<p data-lang="Encapsulation8" class="learn-oop-desc">У цьому прикладі ми визначаємо базовий клас Shape з віртуальним методом area(). Потім ми створюємо два підкласи Rectangle і Triangle, які успадковують Shape і замінюють метод area().</p>
+    </div>
+    <div class="text-and-image-container">
+		<p data-lang="Encapsulation9" class="learn-oop-desc">У функції main() ми оголошуємо вказівник типу Shape та ініціалізуємо його, щоб він вказував на об’єкт Rectangle. Ми викликаємо метод area() за допомогою покажчика, який викликає перевизначений метод у класі Rectangle і повертає площу прямокутника.</p>
+    </div>
+    <div class="text-and-image-container">
+		<p data-lang="Encapsulation10" class="learn-oop-desc">Потім ми змінюємо вказівник на об’єкт Triangle і знову викликаємо метод area(). Цього разу в класі Triangle викликається перевизначений метод, який повертає площу трикутника.</p>
+    </div>
+    <div class="text-and-image-container">
+		<p data-lang="Encapsulation11" class="learn-oop-desc">Як ми бачимо, той самий метод area() викликається для двох різних об’єктів різних класів, але в кожному підкласі викликається перевизначений метод, демонструючи поліморфізм у дії.</p>
+    </div>
+	</main>
+
+	<footer class="footer">
+		<p>&copy; 2023 My Website</p>
+	</footer>
+
+	<script>
+		const translations = {
+		  en: {
+			"learn-oop": "Polymorphism",
+			"Encapsulation1": "Polymorphism is one of the pillars of OOP, along with inheritance and encapsulation. It helps to make code more flexible, reusable, and easier to maintain. Polymorphism is achieved through two mechanisms: method overloading and method overriding.",
+            "Encapsulation2": "Method overloading allows multiple methods with the same name but different parameters to coexist within the same class. When a method is called, the compiler determines which method to invoke based on the number and types of arguments passed to it.",
+            "Encapsulation3": "Method overriding, on the other hand, allows a subclass to provide its own implementation of a method defined in its superclass. When a method is called on an object of the subclass, the overridden method is executed instead of the method defined in the superclass.",
+            "Encapsulation4": "One of the main advantages of polymorphism is that it allows for code to be written in a more generic way. This means that a single method can be used to handle objects of different classes, as long as they share a common superclass or interface. This can greatly reduce code duplication and make the code more maintainable.",
+            "Encapsulation5": "Another advantage of polymorphism is that it allows for greater flexibility in program design. By defining a class hierarchy, new classes can be easily added to the program without affecting the existing code. This is because any method that works on an object of the superclass will also work on objects of any subclass.",
+            "learn-oop-1": "Principle of operation",
+            "Encapsulation8": "In this example, we define a base class Shape with a virtual method area(). We then create two subclasses Rectangle and Triangle that inherit from Shape and override the area() method.",
+            "Encapsulation9": "In the main() function, we declare a pointer of type Shape and initialize it to point to a Rectangle object. We call the area() method using the pointer, which invokes the overridden method in the Rectangle class and returns the area of the rectangle.",
+            "Encapsulation10": "We then change the pointer to point to a Triangle object and call the area() method again. This time, the overridden method in the Triangle class is invoked and returns the area of the triangle.",
+            "Encapsulation11": "As we can see, the same method area() is called on two different objects of different classes, but the overridden method in each subclass is invoked, demonstrating polymorphism in action.",
+		  },
+		  uk: {
+			"learn-oop": "Поліморфізм",
+			"Encapsulation1": "Поліморфізм є одним із стовпів ООП разом із успадкуванням та інкапсуляцією. Це допомагає зробити код більш гнучким, зручним для багаторазового використання та зручнішим у обслуговуванні. Поліморфізм досягається за допомогою двох механізмів: перевантаження методу та перевизначення методу.",
+            "Encapsulation2": "Перевантаження методів дозволяє співіснувати в одному класі декільком методам з однаковою назвою, але різними параметрами. Коли метод викликається, компілятор визначає, який метод викликати на основі кількості та типів переданих йому аргументів.",
+            "Encapsulation3": "Перевизначення методу, з іншого боку, дозволяє підкласу забезпечити власну реалізацію методу, визначеного в його суперкласі. Коли метод викликається для об’єкта підкласу, замість методу, визначеного в суперкласі, виконується перевизначений метод.",
+            "Encapsulation4": "Однією з головних переваг поліморфізму є те, що він дозволяє писати код у більш загальний спосіб. Це означає, що один метод може використовуватися для обробки об’єктів різних класів, якщо вони мають спільний суперклас або інтерфейс. Це може значно зменшити дублювання коду та зробити код більш придатним для обслуговування.",
+            "Encapsulation5": "Ще одна перевага поліморфізму полягає в тому, що він забезпечує більшу гнучкість у розробці програм. Визначивши ієрархію класів, нові класи можна легко додавати до програми, не впливаючи на існуючий код. Це тому, що будь-який метод, який працює з об’єктом суперкласу, також працюватиме з об’єктами будь-якого підкласу.",
+			"learn-oop-1": "Принцип роботи",
+			"Encapsulation8": "У цьому прикладі ми визначаємо базовий клас Shape з віртуальним методом area(). Потім ми створюємо два підкласи Rectangle і Triangle, які успадковують Shape і замінюють метод area().",
+            "Encapsulation9": "У функції main() ми оголошуємо вказівник типу Shape та ініціалізуємо його, щоб він вказував на об’єкт Rectangle. Ми викликаємо метод area() за допомогою покажчика, який викликає перевизначений метод у класі Rectangle і повертає площу прямокутника.",
+            "Encapsulation10": "Потім ми змінюємо вказівник на об’єкт Triangle і знову викликаємо метод area(). Цього разу в класі Triangle викликається перевизначений метод, який повертає площу трикутника.",
+            "Encapsulation11": "Як ми бачимо, той самий метод area() викликається для двох різних об’єктів різних класів, але в кожному підкласі викликається перевизначений метод, демонструючи поліморфізм у дії.",
+		  },
+		};
+
+		function changeLanguage(lang)
+		{
+	  		const elements = document.querySelectorAll('[data-lang]');
+	  		elements.forEach((element) => {
+				const translationKey = element.getAttribute('data-lang');
+				element.textContent = translations[lang][translationKey];
+	  		});
+		}
+
+		document.getElementById('language-select').addEventListener('change', (event) => {
+		changeLanguage(event.target.value);
+		});
+	</script>
+</body>
+</html>

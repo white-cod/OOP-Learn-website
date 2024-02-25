@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;500;700&display=swap" rel="stylesheet">
+<head>
+	<meta charset="UTF-8">
+	<title>"Об'єктно орієнтоване програмування успадкування"</title>
+	
+	<style>
+
+		*{font-family:'Jura', sans-serif;}
+		
+		body {
+			background-image: url("img/background-2.jpg");
+    		background-repeat: no-repeat;
+    		background-size: cover;
+			background-attachment: scroll;;
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+		}
+
+		.topbar {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+		}
+
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+		}
+
+		nav a {
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			border-radius: 5px;
+			transition: all 0.2s ease-in-out;
+		}
+
+		nav a:hover {
+			background-color: #fff;
+			color: #333;
+		}
+
+
+		.main {
+ 			max-width: 1500px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+
+		.footer {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+			margin-top: 20%;
+		}
+
+		@keyframes slide-up {
+			from {
+				transform: translateY(-100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slide-down {
+			from {
+				transform: translateY(100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slide-right {
+			from {
+				transform: translateX(-100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slide-left {
+			from {
+				transform: translateX(100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		.topbar {
+			animation: slide-up 0.5s ease-in-out;
+		}
+
+		.sidebar {
+			animation: slide-up 0.5s ease-in-out;
+		}
+
+		.footer {
+			animation: slide-down 0.5s ease-in-out;
+		}
+
+		.terminal-style {
+			animation: slide-right 0.5s ease-in-out;
+		}
+
+		.code-example {
+			animation: slide-down 0.5s ease-in-out;
+		}
+
+		.code-example-2 {
+			animation: slide-left 0.5s ease-in-out;
+		}
+
+		.language-select-container {
+			display: flex;
+			align-items: center;
+			margin-right: 20px;
+		}
+
+		#language-select {
+			background-color: #333;
+			color: #fff;
+			border: none;
+			padding: 5px 10px;
+			border-radius: 5px;
+			outline: none;
+			cursor: pointer;
+			font-family: 'Jura', sans-serif;
+		}
+
+		#language-select:hover {
+			background-color: #555;
+		}
+
+		#language-select option {
+			background-color: #333;
+			color: #fff;
+		}
+
+		.logo {
+			height: 40px;
+			margin-right: 20px;
+		}
+
+		.terminal-style {
+			background-color: #fff;
+			color: #000;
+			font-family: 'Menlo', monospace;
+			padding: 20px;
+			border-radius: 20px;
+			margin-top: 50px;
+			position: relative;
+			font-size: 20px;
+			word-wrap: break-word;
+			max-height: calc(50vh - (-1500px + (2 * (20px +10vw))));
+		}
+
+		.terminal-style .terminal-circles {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			display: flex;
+		}
+
+		.terminal-style .terminal-circle {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			margin-right: 4px;
+		}
+
+		.terminal-style .terminal-circle.red {
+			background-color: #FF5F56;
+		}
+
+		.terminal-style .terminal-circle.yellow {
+			background-color: #FFBD2E;
+		}
+
+		.terminal-style .terminal-circle.green {
+			background-color: #27C93F;
+		}
+
+		.main .text-and-image-container {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.main .text-and-image-container img {
+			width: 200px;
+			height: 200px;
+		}
+
+		.learn-oop-desc {
+			width: 70%;
+		}
+
+		.code-example {
+			display: flex;
+			justify-content: left;
+			align-items: left;
+			height: 650px;
+			position: absolute;;
+		}	
+
+		.code-window {
+			width: 900px;
+			height: 450px;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			overflow: hidden;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		}
+
+		.code-header {
+			height: 30px;
+			background-color: #ccc;
+			display: flex;
+			align-items: center;
+		}
+
+		.code-buttons {
+			display: flex;
+			margin-left: 10px;
+		}
+
+		.code-button {
+			width: 12px;
+			height: 12px;
+			margin-right: 5px;
+			border-radius: 50%;
+		}
+
+		.code-button.close {
+			background-color: #ff5f56;
+		}
+
+		.code-button.minimize {
+			background-color: #ffbd2e;
+		}
+
+		.code-button.maximize {
+			background-color: #27c93f;
+		}
+
+		.code-title {
+			font-size: 14px;
+			font-weight: bold;
+			margin-left: 10px;
+		}
+
+		.code-body {
+			padding: 10px;
+			overflow: auto;
+			text-align: left;
+		}
+
+		pre {
+			margin: 0;
+		}
+
+		.code-example-2 {
+			display: flex;
+			justify-content: right;
+			align-items: left;
+			height: 365px;
+		}
+
+		.code-body-2{
+			padding: 10px;
+			overflow: auto;
+			text-align: left;
+			color: #fff;
+		}
+
+		.code-window-2 {
+			width: 500px;
+			height: 400px;
+			background-color: rgb(0, 0, 0);
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			overflow: hidden;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		}
+
+		.code-buttons-2 {
+			display: flex;
+			margin-left: 10px;
+		}
+
+			::-webkit-scrollbar {
+			width: 0.5em;
+			height: 0.5em;
+		}
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: transparent;
+		}
+
+		body {
+			scrollbar-width: none;
+		}
+
+		::-webkit-scrollbar {
+			width: 0.5em;
+			height: 0.5em;
+			background-color: #555;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: #333;
+		}
+
+</style>
+
+</head>
+<body>
+
+	<header class="topbar">
+		<nav>
+			<ul>
+				<img src="img/Logo2.png" class="logo">
+				<li><a href="main.html">Home</a></li>
+				<li><a href="About.html">About</a></li>
+			</ul>
+			<div class="language-select-container">
+				<label for="language-select" class="sr-only">Select language</label>
+				<select id="language-select">
+					<option value="uk">Українська</option>
+					<option value="en">English</option>
+				</select>
+				<a href="SignIn.html">Sign In</a>
+			</div>
+		</nav>
+	</header>
+	
+	<main class="main terminal-style">
+			<div class="terminal-circles">
+				<div class="terminal-circle red"></div>
+				<div class="terminal-circle yellow"></div>
+				<div class="terminal-circle green"></div>
+		  	</div>
+	<h1 data-lang="learn-oop">Успадкування</h1>
+	<div class="text-and-image-container">
+		<p data-lang="Encapsulation1" class="learn-oop-desc">Спадкування є одним із найважливіших принципів об'єктно-орієнтованого програмування, оскільки воно дозволяє створювати ієрархічні структури об'єктів. Використовуючи успадкування, можна створити загальний клас, який визначатиме характеристики та поведінку, властиві якомусь набору пов'язаних об'єктів. Надалі цей клас може бути успадкований іншими, більш приватними класами, кожен з яких додаватиме унікальні, властиві тільки йому характеристики і доповнювати або змінювати поведінку базового класу. У термінах Java такий загальний клас називається суперкласом (superclass), або базовим класом (base class), або класом-батьком (parent class), а клас, що його успадковує, - підкласом (subclass), або дочірнім класом (child class), або класом-нащадком (derived class).</p>
+	</div>
+	</main>
+
+	<main class="main">
+		<div class="code-example">
+		  <div class="code-window">
+			<div class="code-header">
+			  <div class="code-buttons">
+				<div class="code-button close"></div>
+				<div class="code-button minimize"></div>
+				<div class="code-button maximize"></div>
+			  </div>
+			  <div class="code-title">C++</div>
+			</div>
+		<div class="code-body">
+			  <pre><code>class Animal {
+    public:
+        void eat() {
+            cout << "Eating...\n";
+        }
+    };
+             
+        class Cat: public Animal {
+    public:
+        void meow() {
+             cout << "Meow!\n";
+        }
+    };
+             
+int main() {
+    Cat c;
+    c.eat();
+    c.meow();
+             
+    return 0;
+}
+			  </code></pre>
+			</div>
+		  </div>
+		</div>
+	  </main>
+
+	  <main class="main">
+		<div class="code-example-2">
+		  <div class="code-window-2">
+			<div class="code-header">
+			  <div class="code-buttons-2">
+				<div class="code-button close"></div>
+				<div class="code-button minimize"></div>
+				<div class="code-button maximize"></div>
+			  </div>
+			  <div class="code-title">Terminal</div>
+			</div>
+		<div class="code-body-2">
+			  <pre><code>Eating...
+Meow!
+			  </code></pre>
+			</div>
+		  </div>
+		</div>
+	  </main>
+
+	  <main class="main terminal-style">
+			<div class="terminal-circles">
+				<div class="terminal-circle red"></div>
+				<div class="terminal-circle yellow"></div>
+				<div class="terminal-circle green"></div>
+		  	</div>
+	<h2 data-lang="learn-oop-1">Принцип роботи</h2>
+	<div class="text-and-image-container">
+		<p data-lang="Encapsulation8" class="learn-oop-desc">У цьому прикладі Cat є дочірнім класом, який успадковує батьківський клас Animal. Клас Cat має власну функцію meow(), але також має доступ до функції eat() із батьківського класу Animal. Специфікатор публічного доступу використовується для визначення того, що дочірній клас має доступ до відкритих членів батьківського класу.</p></div>
+	</main>
+
+	<footer class="footer">
+		<p>&copy; 2023 My Website</p>
+	</footer>
+
+	<script>
+		const translations = {
+		  en: {
+			"learn-oop": "Inheritance",
+			"Encapsulation1": "Inheritance is one of the most important principles of object-oriented programming because it allows you to create hierarchical structures of objects. Using inheritance, you can create a generic class that defines the characteristics and behaviors of a set of related objects. In the future, this class can be inherited by other, more specific classes, each of which will add unique characteristics peculiar only to it and supplement or change the behavior of the base class. In Java terms, such a general class is called a superclass (superclass), or a base class (base class), or a parent class (parent class), and the class that inherits it is called a subclass (subclass), or child class (child class), or descendant class (derived class).",
+            "learn-oop-1": "Principle of operation",
+			"Encapsulation8": "In this example, Cat is a child class that inherits from the parent class Animal. The Cat class has its own function meow() but also has access to the eat() function from the parent class Animal. The public access specifier is used to specify that the child class has access to the public members of the parent class.",
+		  },
+		  uk: {
+			"learn-oop": "Успадкування",
+			"Encapsulation1": "Спадкування є одним із найважливіших принципів об'єктно-орієнтованого програмування, оскільки воно дозволяє створювати ієрархічні структури об'єктів. Використовуючи успадкування, можна створити загальний клас, який визначатиме характеристики та поведінку, властиві якомусь набору пов'язаних об'єктів. Надалі цей клас може бути успадкований іншими, більш приватними класами, кожен з яких додаватиме унікальні, властиві тільки йому характеристики і доповнювати або змінювати поведінку базового класу. У термінах Java такий загальний клас називається суперкласом (superclass), або базовим класом (base class), або класом-батьком (parent class), а клас, що його успадковує, - підкласом (subclass), або дочірнім класом (child class), або класом-нащадком (derived class).",
+			"learn-oop-1": "Принцип роботи",
+			"Encapsulation8": "У цьому прикладі Cat є дочірнім класом, який успадковує батьківський клас Animal. Клас Cat має власну функцію meow(), але також має доступ до функції eat() із батьківського класу Animal. Специфікатор публічного доступу використовується для визначення того, що дочірній клас має доступ до відкритих членів батьківського класу.",
+		  },
+		};
+
+		function changeLanguage(lang)
+		{
+	  		const elements = document.querySelectorAll('[data-lang]');
+	  		elements.forEach((element) => {
+				const translationKey = element.getAttribute('data-lang');
+				element.textContent = translations[lang][translationKey];
+	  		});
+		}
+
+		document.getElementById('language-select').addEventListener('change', (event) => {
+		changeLanguage(event.target.value);
+		});
+	</script>
+</body>
+</html>

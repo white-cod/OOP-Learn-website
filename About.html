@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;500;700&display=swap" rel="stylesheet">
+<head>
+	<meta charset="UTF-8">
+	<title>"Об'єктно орієнтоване програмування про нас"</title>
+	
+	<style>
+
+		*{font-family:'Jura', sans-serif;}
+		
+		body {
+			background-image: url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80");
+    		background-repeat: no-repeat;
+    		background-size: cover;
+			background-attachment: fixed;
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+		}
+
+		.topbar {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+		}
+
+		nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			align-items: center;
+		}
+
+		nav a {
+			color: #fff;
+			text-decoration: none;
+			padding: 10px;
+			border-radius: 5px;
+			transition: all 0.2s ease-in-out;
+		}
+
+		nav a:hover {
+			background-color: #fff;
+			color: #333;
+		}
+
+
+		.main {
+ 			max-width: 1500px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+
+		.footer {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+			margin-top: 20%;
+		}
+
+		@keyframes slide-up {
+			from {
+				transform: translateY(-100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slide-down {
+			from {
+				transform: translateY(100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes slide-right {
+			from {
+				transform: translateX(-100%);
+			}
+			to {
+				transform: translateY(0);
+			}
+		}
+
+		.topbar {
+			animation: slide-up 0.5s ease-in-out;
+		}
+
+		.footer {
+			animation: slide-down 0.5s ease-in-out;
+		}
+
+		.terminal-style {
+			animation: slide-right 0.5s ease-in-out;
+		}
+
+		.language-select-container {
+			display: flex;
+			align-items: center;
+			margin-right: 20px;
+		}
+
+		#language-select {
+			background-color: #333;
+			color: #fff;
+			border: none;
+			padding: 5px 10px;
+			border-radius: 5px;
+			outline: none;
+			cursor: pointer;
+			font-family: 'Jura', sans-serif;
+		}
+
+		#language-select:hover {
+			background-color: #555;
+		}
+
+		#language-select option {
+			background-color: #333;
+			color: #fff;
+		}
+
+		.logo {
+			height: 40px;
+			margin-right: 20px;
+		}
+
+		.terminal-style {
+			background-color: #fff;
+			color: #000;
+			font-family: 'Menlo', monospace;
+			padding: 20px;
+			border-radius: 20px;
+			margin-top: 100px;
+			position: relative;
+			font-size: 20px;
+			word-wrap: break-word;
+			max-height: calc(50vh - (-150px + (2 * (20px +10vw))));
+		}
+
+		.terminal-style .terminal-circles {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			display: flex;
+		}
+
+		.terminal-style .terminal-circle {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			margin-right: 4px;
+		}
+
+		.terminal-style .terminal-circle.red {
+			background-color: #FF5F56;
+		}
+
+		.terminal-style .terminal-circle.yellow {
+			background-color: #FFBD2E;
+		}
+
+		.terminal-style .terminal-circle.green {
+			background-color: #27C93F;
+		}
+
+		.main .text-and-image-container {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.main .text-and-image-container img {
+			width: 200px;
+			height: 200px;
+		}
+
+		.learn-oop-desc {
+			width: 70%;
+		}
+
+		::-webkit-scrollbar {
+			width: 0.5em;
+			height: 0.5em;
+		}
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: transparent;
+		}
+
+		body {
+			scrollbar-width: none;
+		}
+
+		::-webkit-scrollbar {
+			width: 0.5em;
+			height: 0.5em;
+			background-color: #555;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: #333;
+		}
+	
+</style>
+
+</head>
+<body>
+
+	
+	<header class="topbar">
+		<nav>
+			<ul>
+				<img src="img/Logo2.png" class="logo">
+				<li><a href="main.html">Home</a></li>
+				<li><a href="About.html">About</a></li>
+			</ul>
+			<div class="language-select-container">
+				<label for="language-select" class="sr-only">Select language</label>
+				<select id="language-select">
+					<option value="uk">Українська</option>
+					<option value="en">English</option>
+				</select>
+				<a href="SignIn.html">Sign In</a>
+			</div>
+		</nav>
+	</header>
+	
+	<main class="main terminal-style">
+			<div class="terminal-circles">
+				<div class="terminal-circle red"></div>
+				<div class="terminal-circle yellow"></div>
+				<div class="terminal-circle green"></div>
+		  	</div>
+	<h2 data-lang="learn-oop">Дізнатися про нас</h2>
+	<div class="text-and-image-container">
+		<p data-lang="learn-oop-desc" class="learn-oop-desc">Ласкаво просимо до нашої школи веб-програмування, де ми спеціалізуємося на викладанні парадигми об’єктно-орієнтованого програмування (ООП) за допомогою C++. Наша навчальна програма розроблена для початківців без попередніх знань ні з ООП, ні з C++. Наші курси знайомлять студентів з такими фундаментальними поняттями, як класи та об’єкти, успадкування, поліморфізм, інкапсуляція та абстракція даних. На додаток до ретельного висвітлення цих основних тем за допомогою поєднання лекцій і практичних вправ, ми також наголошуємо на передових практиках, таких як читабельність коду та зручність обслуговування. Ви дізнаєтеся, як писати надійні програми за допомогою C++ разом із такими популярними фреймворками, як Qt, які полегшать вам набуття досвіду у створенні програм із графічним інтерфейсом користувача. Крім того, ви отримаєте досвід спільної роботи над реальними проектами разом з іншими програмістами-початківцями. У нашій школі веб-програмування ми прагнемо не просто навчити вас галузевим стандартам навичок, а радше надати вам всебічну освіту, щоб ви могли досягти успіху за межами аудиторії. З таким мисленням керуємо всім, що ми робимо тут, у школі, з першого дня до дня випуску; Будьте впевнені, знаючи, що випускники будуть готові - впевнені та кваліфіковані - до будь-яких викликів, які вони зустрінуть у своїй кар'єрі!</p>
+		<img src="img/C++.png">
+	</div>
+	</main>
+
+	<footer class="footer">
+		<p>&copy; 2023 My Website</p>
+	</footer>
+
+	<script>
+		const translations = {
+		  en: {
+			"learn-oop": "Learn about us",
+			"learn-oop-desc": "Welcome to our web programming school, where we specialize in teaching the object-oriented programming (OOP) paradigm using C++. Our curriculum is designed for beginners with no prior knowledge of either OOP or C++. Our courses introduce students to fundamental concepts such as classes and objects, inheritance, polymorphism, encapsulation, and data abstraction. In addition to covering these core topics thoroughly through a mix of lectures and hands-on exercises, we also emphasize best practices such as code readability and maintainability. You'll learn how to write robust programs using C++, along with popular frameworks like Qt that will make it easy for you become proficient in creating GUI applications. Furthermore, you'll gain experience working collaboratively on real-world projects alongside other aspiring programmers. At our web programming school, our aim is not simply to train you in industry-standard skills but rather empower you with an all-around education so that you can succeed beyond the classroom. With this mindset driving everything we do here at the school from day one till graduation day; rest assured knowing graduates will be ready - confident & skilled -for any challenge they encounter within their career paths!",
+		  },
+		  uk: {
+			"learn-oop": "Дізнатися про нас",
+			"learn-oop-desc": "Ласкаво просимо до нашої школи веб-програмування, де ми спеціалізуємося на викладанні парадигми об’єктно-орієнтованого програмування (ООП) за допомогою C++. Наша навчальна програма розроблена для початківців без попередніх знань ні з ООП, ні з C++. Наші курси знайомлять студентів з такими фундаментальними поняттями, як класи та об’єкти, успадкування, поліморфізм, інкапсуляція та абстракція даних. На додаток до ретельного висвітлення цих основних тем за допомогою поєднання лекцій і практичних вправ, ми також наголошуємо на передових практиках, таких як читабельність коду та зручність обслуговування. Ви дізнаєтеся, як писати надійні програми за допомогою C++ разом із такими популярними фреймворками, як Qt, які полегшать вам набуття досвіду у створенні програм із графічним інтерфейсом користувача. Крім того, ви отримаєте досвід спільної роботи над реальними проектами разом з іншими програмістами-початківцями. У нашій школі веб-програмування ми прагнемо не просто навчити вас галузевим стандартам навичок, а радше надати вам всебічну освіту, щоб ви могли досягти успіху за межами аудиторії. З таким мисленням керуємо всім, що ми робимо тут, у школі, з першого дня до дня випуску; Будьте впевнені, знаючи, що випускники будуть готові - впевнені та кваліфіковані - до будь-яких викликів, які вони зустрінуть у своїй кар'єрі!",
+		  },
+		};
+
+		function changeLanguage(lang)
+		{
+	  		const elements = document.querySelectorAll('[data-lang]');
+	  		elements.forEach((element) => {
+				const translationKey = element.getAttribute('data-lang');
+				element.textContent = translations[lang][translationKey];
+	  		});
+		}
+
+		document.getElementById('language-select').addEventListener('change', (event) => {
+		changeLanguage(event.target.value);
+		});
+	</script>
+</body>
+</html>
